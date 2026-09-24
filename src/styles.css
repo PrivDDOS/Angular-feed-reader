@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
-@import "./tokens.css";
+@import '../public/starter/tokens.css'
 
 @theme inline {
   --color-bg-primary: var(--color-bg-primary);
