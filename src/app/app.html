@@ -8,14 +8,31 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <main class="w-full min-h-screen flex flex-col">
+  <!-- Nav Bar -->  
   <nav class="w-full h-[60px] flex flex-row">
     <div class="ms-5 flex items-center">
         <p class="h3 text-lg font-bold">Frontpage</p>
     </div>
     <div class="w-50 flex flex-row justify-evenly">
-        <button class="h4 font-bold cursor-pointer">Feed</button>
-        <button class="h4 cursor-pointer">Digest</button>
-        <button class="h4 cursor-pointer">Discover</button>
+        <button 
+        class="h4 cursor-pointer ps-6"
+        (click)="activeTab = 'Feed'"
+        [ngClass]="{'font-bold': activeTab === 'Feed', 'font-thin': activeTab !== 'Feed'}"
+        >
+        Feed
+        </button>
+        <button class="h4 cursor-pointer ps-6"
+        (click)="activeTab = 'Digest'"
+        [ngClass]="{'font-bold': activeTab === 'Digest', 'font-thin': activeTab !== 'Digest'}"
+        >
+        Digest
+        </button>
+        <button class="h4 cursor-pointer ps-6"
+        (click)="activeTab = 'Discover'"
+        [ngClass]="{'font-bold': activeTab === 'Discover', 'font-thin': activeTab !== 'Discover'}"
+        >
+        Discover
+        </button>
     </div>
     <div class="flex flex-row items-center ms-auto pe-8">
         <div class="w-75">
@@ -23,10 +40,45 @@
             <button class="text-xl font-bold ps-4">+</button>       
         </div>
         <div class="px-4">
-            <div class="rounded-4xl bg-lime-500 uppercase font-bold p-1">me</div>
+            <div class="w-[33px] text-center rounded-4xl bg-lime-500 uppercase font-bold p-1">
+                <p class="text-base text-white">ps</p>
+            </div>
         </div>
     </div>
   </nav>
+
+  <!-- Side Bar -->
+   <div class="w-50 h-100 pt-6 ps-4">
+    <div class="flex flex-col">
+        <div class="flex flex-row items-center">
+            <img 
+            src="https://cdn-icons-png.flaticon.com/512/14138/14138073.png" 
+            alt="items icon"
+            class="w-[18px] me-2"
+            >
+            <p class="text-sm">All Items</p>
+            <div class="ms-auto">
+                <p class="text-sm">47</p>
+            </div>
+        </div>
+        <div class="flex flex-row items-center pt-4">
+            <img 
+            src="https://cdn-icons-png.flaticon.com/512/10421/10421470.png" 
+            alt="bookmark icon"
+            class="w-[18px] me-2"
+            >
+            <p class="text-sm">Saved</p>
+            <div class="ms-auto">
+                <p class="text-sm">0</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col pt-8">
+        <p class="text-sm font-thin uppercase tracking-widest">
+            categories
+        </p>
+    </div>
+   </div>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
