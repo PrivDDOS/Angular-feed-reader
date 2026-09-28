@@ -77,6 +77,12 @@
         <p class="text-sm font-thin uppercase tracking-widest">
             categories
         </p>
+        @for(category of name; track category) {
+            <p>{{ category.name }}</p>
+            @for(feeds of feed; track feeds) {
+                <p>{{ feeds.title }}</p>
+            }
+        }
     </div>
    </div>
 </main>
