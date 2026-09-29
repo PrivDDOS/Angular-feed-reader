@@ -49,14 +49,15 @@
 
   <!-- Side Bar -->
    <div class="w-50 h-100 pt-6 ps-4">
+    
     <div class="flex flex-col">
         <div class="flex flex-row items-center">
             <img 
             src="https://cdn-icons-png.flaticon.com/512/14138/14138073.png" 
             alt="items icon"
-            class="w-[18px] me-2"
+            class="w-[16px] me-2"
             >
-            <p class="text-sm">All Items</p>
+            <p class="text-sm font-normal">All Items</p>
             <div class="ms-auto">
                 <p class="text-sm">47</p>
             </div>
@@ -65,24 +66,49 @@
             <img 
             src="https://cdn-icons-png.flaticon.com/512/10421/10421470.png" 
             alt="bookmark icon"
-            class="w-[18px] me-2"
+            class="w-[16px] me-2"
             >
-            <p class="text-sm">Saved</p>
+            <p class="text-sm font-normal">Saved</p>
             <div class="ms-auto">
                 <p class="text-sm">0</p>
             </div>
         </div>
     </div>
+
     <div class="flex flex-col pt-8">
-        <p class="text-sm font-thin uppercase tracking-widest">
+        <p class="text-sm font-thin uppercase tracking-widest pb-2">
             categories
         </p>
-        @for(category of name; track category) {
-            <p>{{ category.name }}</p>
-            @for(feeds of feed; track feeds) {
-                <p>{{ feeds.title }}</p>
+        @for(category of categories; track category.name) {
+            <div class="flex items-center">
+                <p class="text-base font-medium">
+                    {{ category.name }}
+                </p>
+                <p class="text-base font-medium ms-auto">
+                    {{ category.feeds.length }}
+                </p>
+            </div>
+            @for (feed of category.feeds; track feed.feedUrl) {
+                <div class="flex items-center hidden">
+                    <p class="text-base font-thin">
+                        {{ feed.title }}
+                    </p>
+                    <p class="text-base font-thin ms-auto">
+                        1
+                    </p>
+                </div>
+
             }
         }
+    </div>
+    
+    <div class="flex items-center pt-6">
+        <img 
+        src="https://cdn-icons-png.flaticon.com/512/14360/14360190.png" 
+        alt="check mark icon"
+        class="w-[16px] me-2"
+        >
+        <p class="text-sm font-normal">All feeds healthy</p>
     </div>
    </div>
 </main>

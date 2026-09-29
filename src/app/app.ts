@@ -3,6 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 
+type Feed = { title: string; feedUrl: string; siteUrl: string; description: string; format: string; notes: string };
+type Category = { name: string; feeds: Feed[] };
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -14,8 +17,7 @@ export class App implements OnInit {
   protected readonly title = signal('angular-feed');
 
   activeTab: 'Feed' | 'Digest' | 'Discover' = 'Feed';
-  name: any[] = [];
-  feed: any[] = [];
+  categories: Category[] = [];
   filterData: any[] = [];
 
   constructor(
@@ -24,12 +26,11 @@ export class App implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.http.get<{ categories: { name: string; feeds: any[] }[] }>('/data/sample-feeds.json').subscribe(res => {
-      this.name = res.categories.flatMap(category => category.name);
-      this.feed = res.categories.flatMap(category => category.feeds)
+    this.http.get<{ categories: Category[] }>('/data/sample-feeds.json').subscribe(res => {
+      this.categories = res.categories;
       this.filterData = [res.categories]
       this.cdr.detectChanges()
-      console.log(this.name, this.feed)
+      console.log(this.categories)
     });
   };
 
