@@ -5,6 +5,7 @@
   "categories": [
     {
       "name": "Frontend",
+      "color": "#2563eb",
       "feeds": [
         {
           "title": "CSS-Tricks",
@@ -53,6 +54,7 @@
     },
     {
       "name": "Design",
+      "color": "#BF77F6",
       "feeds": [
         {
           "title": "Sidebar.io",
@@ -96,6 +98,7 @@
     },
     {
       "name": "Backend & DevOps",
+      "color": "#D5B60A",
       "feeds": [
         {
           "title": "Cloudflare Blog",
@@ -131,6 +134,7 @@
     },
     {
       "name": "General Tech",
+      "color": "#0B008C",
       "feeds": [
         {
           "title": "The Pragmatic Engineer",
@@ -152,6 +156,7 @@
     },
     {
       "name": "AI & ML",
+      "color": "#49236D",
       "feeds": [
         {
           "title": "Simon Willison's Weblog",

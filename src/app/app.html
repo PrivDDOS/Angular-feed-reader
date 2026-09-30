@@ -80,11 +80,17 @@
             categories
         </p>
         @for(category of categories; track category.name) {
-            <div class="flex items-center">
-                <p class="text-base font-medium">
+            <div class="flex items-center my-1">
+                <span
+                    class="mr-2 inline-block h-2 w-2 shrink-0 rounded-full"
+                    [style.backgroundColor]="category.color"
+                >
+
+                </span>
+                <p class="text-base font-thiner cursor-pointer">
                     {{ category.name }}
                 </p>
-                <p class="text-base font-medium ms-auto">
+                <p class="text-base font-thiner ms-auto">
                     {{ category.feeds.length }}
                 </p>
             </div>
@@ -110,6 +116,7 @@
         >
         <p class="text-sm font-normal">All feeds healthy</p>
     </div>
+    
    </div>
 </main>
 
