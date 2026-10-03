@@ -34,4 +34,10 @@ export class App implements OnInit {
     });
   };
 
+  get totalFeeds(): number {
+    return this.categories.reduce(
+      (total, category) => total + category.feeds.length, 0
+    );
+  }
+
 }
