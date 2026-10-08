@@ -130,11 +130,39 @@
                 <p class="h3 text-lg font-bold">All Items</p>
                 <p class="text-sm ps-2">{{ totalFeeds }} unread</p>
             </div>
-            <div class="ms-auto">
-                <div class="flex justify-evenly">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4254/4254068.png" alt="normal layout icon" class="w-[14px]">
+            <div class="w-auto flex items-center justify-between ms-auto me-16">
+                <div class="flex justify-evenly items-center w-40 h-full">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4254/4254068.png" alt="normal layout icon" class="w-[14px] h-[14px]">
                     <img src="https://cdn-icons-png.flaticon.com/512/1250/1250641.png" alt="bento layout icon" class="w-[14px] h-[14px]">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4990/4990567.png" alt="list layout icon" class="w-[14px]">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4990/4990567.png" alt="list layout icon" class="w-[14px] h-[14px]">
+                </div>
+                <div class="flex justify-evenly items-center h-full w-auto">
+                    <div 
+                    class="relative w-[80px] h-[30px]
+                    after:content-['New'] after:inline-block after:relative
+                    after:w-[10px] after:h-[10px]
+                    after:bottom-6 after:left-0 after:bg-zinc-500
+                    after:[clip-path:polygon(60%_0%,_0%_55%,_0%_0%)]"
+                    >
+                        <p class="relative flex justify-center items-center text-base font-thiner cursor-pointer">
+                            Newest
+                        </p>
+                    </div>
+
+                    <div class="flex justify-center items-center w-[80px] h-[30px]">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2805/2805359.png" alt="refresh icon"
+                        class="w-[16px] me-1"
+                        >
+                        <p class="text-base font-thiner cursor-pointer">
+                            Refresh
+                        </p>
+                    </div>
+                    
+                    <div class="flex justify-center items-center w-auto h-[30px] ms-2">
+                        <p class="text-base font-thiner cursor-pointer">
+                            Mark all read
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
