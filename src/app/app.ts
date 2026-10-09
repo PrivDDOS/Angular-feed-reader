@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 
-type Feed = { title: string; feedUrl: string; siteUrl: string; description: string; format: string; notes: string };
+type Feed = { title: string; feedUrl: string; siteUrl: string; description: string; format: string; notes?: string };
 type Category = { name: string; color: string ;feeds: Feed[] };
 
 @Component({
