@@ -132,9 +132,9 @@
             </div>
             <div class="w-auto flex items-center justify-between ms-auto me-16">
                 <div class="flex justify-evenly items-center w-40 h-full">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4254/4254068.png" alt="normal layout icon" class="w-[14px] h-[14px]">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1250/1250641.png" alt="bento layout icon" class="w-[14px] h-[14px]">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4990/4990567.png" alt="list layout icon" class="w-[14px] h-[14px]">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4254/4254068.png" alt="normal layout icon" class="w-[14px] h-[14px] cursor-pointer">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1250/1250641.png" alt="bento layout icon" class="w-[14px] h-[14px] cursor-pointer">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4990/4990567.png" alt="list layout icon" class="w-[14px] h-[14px] cursor-pointer">
                 </div>
                 <div class="flex justify-evenly items-center h-full w-auto">
                     <div 
@@ -174,41 +174,53 @@
             </div>
             @for (feeds of categories; track feeds.name) {
                 @for (feed of feeds.feeds; track feed.feedUrl) {
-                    <div class="flex flex-row">
+                    <ul class="flex flex-row py-5">
 
                         <span 
-                        class="mr-2 inline-block h-2 w-2 shrink-0 rounded-full bg-sky-500"
+                        class="inline-block h-2 w-2 shrink-0 rounded-full bg-sky-500 mt-[8px] mr-[6px]"
                         >
                         </span>
 
-                        <div 
-                        class="w-full flex flex-row"
+                        <li 
+                        class="w-full flex flex-row ps-2"
                         >
                             <div class="flex flex-col">
-                                <div class="flex-row">
-                                    <p class="text-sm font-thiner">
+                                <div class="flex flex-row">
+                                    <span
+                                    class="w-5 h-5 flex justify-center rounded"
+                                    [style.backgroundColor]="'color-mix(in srgb, ' + feeds.color + ' 80%, black)'"
+                                    >
+                                        <p class="text-sm font-thin text-white">
+                                            {{ feed.title[0] }}
+                                        </p>
+                                    </span>
+                                    <p class="text-sm font-thiner ps-2">
                                         {{ feed.title }}
                                     </p>
                                 </div>
-                                <p class="text-lg font-bold">
+                                <p class="text-lg font-bold pb-2">
                                     {{ feed.description }}
                                 </p>
                                 @if (feed.notes) {
-                                    <p class="text-base font-thin">
+                                    <p class="text-base font-thin pb-2">
                                         {{ feed.notes }}
                                     </p>
                                 }
                                 <span
-                                class="max-w-max text-base font-normal"
-                                [style.backgroundColor]="feeds.color"
+                                class="max-w-max rounded-full px-2"
+                                [style.backgroundColor]="feeds.color + '70'"
                                 >
-                                    {{ feeds.name }}
+                                    <p 
+                                    class="text-sm font-normal"
+                                    >
+                                        {{ feeds.name }}
+                                    </p>
                                 </span>
                             </div>
 
-                        </div>
+                        </li>
 
-                    </div>
+                    </ul>
                 }
             }
          </div>
