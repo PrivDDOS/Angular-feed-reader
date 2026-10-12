@@ -17,6 +17,7 @@ export class App implements OnInit {
   protected readonly title = signal('angular-feed');
 
   activeTab: 'Feed' | 'Digest' | 'Discover' = 'Feed';
+  categoryBtn: string | null = null;
   categories: Category[] = [];
   filterData: any[] = [];
 
@@ -33,6 +34,10 @@ export class App implements OnInit {
       console.log(this.categories)
     });
   };
+
+  cateClick(str: string) {
+    this.categoryBtn = this.categoryBtn === str ? null : str;
+  }
 
   get totalFeeds(): number {
     return this.categories.reduce(

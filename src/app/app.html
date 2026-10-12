@@ -8,224 +8,238 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <main class="w-full min-h-screen grid grid-cols-8 grid-rows-[60px_auto] gap-8">
-  <!-- Nav Bar -->  
+  <!-- Nav Bar -->
   <nav class="w-full h-[60px] col-span-8">
     <div class="w-full h-full flex flex-row">
-        <div class="ms-5 flex items-center">
-            <p class="h3 text-lg font-bold">Frontpage</p>
+      <div class="ms-5 flex items-center">
+        <p class="h3 text-lg font-bold">Frontpage</p>
+      </div>
+      <div class="w-50 flex flex-row justify-evenly">
+        <button
+          class="h4 cursor-pointer ps-6"
+          (click)="activeTab = 'Feed'"
+          [ngClass]="{ 'font-bold': activeTab === 'Feed', 'font-thin': activeTab !== 'Feed' }"
+        >
+          Feed
+        </button>
+        <button
+          class="h4 cursor-pointer ps-6"
+          (click)="activeTab = 'Digest'"
+          [ngClass]="{ 'font-bold': activeTab === 'Digest', 'font-thin': activeTab !== 'Digest' }"
+        >
+          Digest
+        </button>
+        <button
+          class="h4 cursor-pointer ps-6"
+          (click)="activeTab = 'Discover'"
+          [ngClass]="{
+            'font-bold': activeTab === 'Discover',
+            'font-thin': activeTab !== 'Discover',
+          }"
+        >
+          Discover
+        </button>
+      </div>
+      <div class="flex flex-row items-center ms-auto pe-8">
+        <div class="w-75">
+          <input
+            class="w-60 h-10 outline-none focus:border-1 rounded-4xl ps-4"
+            type="text"
+            placeholder="Search articels"
+          />
+          <button class="text-xl font-bold ps-4">+</button>
         </div>
-        <div class="w-50 flex flex-row justify-evenly">
-            <button 
-            class="h4 cursor-pointer ps-6"
-            (click)="activeTab = 'Feed'"
-            [ngClass]="{'font-bold': activeTab === 'Feed', 'font-thin': activeTab !== 'Feed'}"
-            >
-            Feed
-            </button>
-            <button class="h4 cursor-pointer ps-6"
-            (click)="activeTab = 'Digest'"
-            [ngClass]="{'font-bold': activeTab === 'Digest', 'font-thin': activeTab !== 'Digest'}"
-            >
-            Digest
-            </button>
-            <button class="h4 cursor-pointer ps-6"
-            (click)="activeTab = 'Discover'"
-            [ngClass]="{'font-bold': activeTab === 'Discover', 'font-thin': activeTab !== 'Discover'}"
-            >
-            Discover
-            </button>
+        <div class="px-4">
+          <div class="w-[33px] text-center rounded-4xl bg-lime-500 uppercase font-bold p-1">
+            <p class="text-base text-white">ps</p>
+          </div>
         </div>
-        <div class="flex flex-row items-center ms-auto pe-8">
-            <div class="w-75">
-                <input class="w-60 h-10 outline-none focus:border-1 rounded-4xl ps-4" type="text" placeholder="Search articels"> 
-                <button class="text-xl font-bold ps-4">+</button>       
-            </div>
-            <div class="px-4">
-                <div class="w-[33px] text-center rounded-4xl bg-lime-500 uppercase font-bold p-1">
-                    <p class="text-base text-white">ps</p>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
   </nav>
 
   <!-- Side Bar -->
-   <div class="w-50 h-full row-start-2 ps-4">
-    
+  <div class="w-50 h-full row-start-2 ps-4">
     <div class="flex flex-col">
-        <div class="flex flex-row items-center">
-            <img 
-            src="https://cdn-icons-png.flaticon.com/512/14138/14138073.png" 
-            alt="items icon"
-            class="w-[16px] me-2"
-            >
-            <p class="text-sm font-normal">All Items</p>
-            <div class="ms-auto">
-                <p class="text-sm">{{ totalFeeds }}</p>
-            </div>
+      <div class="flex flex-row items-center">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/14138/14138073.png"
+          alt="items icon"
+          class="w-[16px] me-2"
+        />
+        <p class="text-sm font-normal">All Items</p>
+        <div class="ms-auto">
+          <p class="text-sm">{{ totalFeeds }}</p>
         </div>
-        <div class="flex flex-row items-center pt-4">
-            <img 
-            src="https://cdn-icons-png.flaticon.com/512/10421/10421470.png" 
-            alt="bookmark icon"
-            class="w-[16px] me-2"
-            >
-            <p class="text-sm font-normal">Saved</p>
-            <div class="ms-auto">
-                <p class="text-sm">0</p>
-            </div>
+      </div>
+      <div class="flex flex-row items-center pt-4">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/10421/10421470.png"
+          alt="bookmark icon"
+          class="w-[16px] me-2"
+        />
+        <p class="text-sm font-normal">Saved</p>
+        <div class="ms-auto">
+          <p class="text-sm">0</p>
         </div>
+      </div>
     </div>
 
     <div class="flex flex-col pt-8">
-        <p class="text-sm font-thin uppercase tracking-widest pb-2">
-            categories
-        </p>
-        @for(category of categories; track category.name) {
-            <div class="flex items-center my-1">
-                <span
-                    class="mr-2 inline-block h-2 w-2 shrink-0 rounded-full"
-                    [style.backgroundColor]="category.color"
+      <p class="text-sm font-thin uppercase tracking-widest pb-2">categories</p>
+      @for (category of categories; track category.name) {
+        <div class="flex items-center my-1">
+          <span
+            class="mr-2 inline-block h-2 w-2 shrink-0 rounded-full"
+            [style.backgroundColor]="category.color"
+          >
+          </span>
+          <button 
+          class="text-base font-thiner cursor-pointer"
+          (click)="cateClick(category.name)"
+          >
+            {{ category.name }}
+          </button>
+          <p class="text-base font-thiner ms-auto">
+            {{ category.feeds.length }}
+          </p>
+        </div>
+        @if(categoryBtn === category.name) {
+          @for (feed of category.feeds; track feed.feedUrl) {
+              <div 
+              class="flex items-center"
+              >
+                <span 
+                class="w-5 h-5 flex justify-center rounded"
+                    [style.backgroundColor]="'color-mix(in srgb, ' + category.color + ' 80%, black)'"
                 >
-
+                  <p 
+                  class="text-sm font-thin text-white"
+                  >
+                    {{ feed.title[0] }}
+                  </p>
                 </span>
-                <p class="text-base font-thiner cursor-pointer">
-                    {{ category.name }}
+                <p class="text-base font-thin ps-2">
+                  {{ feed.title }}
                 </p>
-                <p class="text-base font-thiner ms-auto">
-                    {{ category.feeds.length }}
-                </p>
-            </div>
-            @for (feed of category.feeds; track feed.feedUrl) {
-                <div class="flex items-center hidden">
-                    <p class="text-base font-thin">
-                        {{ feed.title }}
-                    </p>
-                    <p class="text-base font-thin ms-auto">
-                        1
-                    </p>
-                </div>
-
-            }
+                <p class="text-base font-thin ms-auto">1</p>
+              </div>
+          }
         }
+      }
     </div>
-    
+
     <div class="flex items-center pt-6">
-        <img 
-        src="https://cdn-icons-png.flaticon.com/512/14360/14360190.png" 
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/14360/14360190.png"
         alt="check mark icon"
         class="w-[16px] me-2"
-        >
-        <p class="text-sm font-normal">All feeds healthy</p>
+      />
+      <p class="text-sm font-normal">All feeds healthy</p>
     </div>
-    
-   </div>
+  </div>
 
-   <!-- Feed -->
-    <div class="col-span-7 row-start-2 ps-14">
-
-        <!-- Feed Filter Bar -->
-        <div class="w-full h-[40px] flex flex-row">
-            <div class="flex items-center">
-                <p class="h3 text-lg font-bold">All Items</p>
-                <p class="text-sm ps-2">{{ totalFeeds }} unread</p>
-            </div>
-            <div class="w-auto flex items-center justify-between ms-auto me-16">
-                <div class="flex justify-evenly items-center w-40 h-full">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4254/4254068.png" alt="normal layout icon" class="w-[14px] h-[14px] cursor-pointer">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1250/1250641.png" alt="bento layout icon" class="w-[14px] h-[14px] cursor-pointer">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4990/4990567.png" alt="list layout icon" class="w-[14px] h-[14px] cursor-pointer">
-                </div>
-                <div class="flex justify-evenly items-center h-full w-auto">
-                    <div 
-                    class="relative w-[80px] h-[30px]
-                    after:content-['New'] after:inline-block after:relative
-                    after:w-[10px] after:h-[10px]
-                    after:bottom-6 after:left-0 after:bg-zinc-500
-                    after:[clip-path:polygon(60%_0%,_0%_55%,_0%_0%)]"
-                    >
-                        <p class="relative flex justify-center items-center text-base font-thiner cursor-pointer">
-                            Newest
-                        </p>
-                    </div>
-
-                    <div class="flex justify-center items-center w-[80px] h-[30px]">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2805/2805359.png" alt="refresh icon"
-                        class="w-[16px] me-1"
-                        >
-                        <p class="text-base font-thiner cursor-pointer">
-                            Refresh
-                        </p>
-                    </div>
-                    
-                    <div class="flex justify-center items-center w-auto h-[30px] ms-2">
-                        <p class="text-base font-thiner cursor-pointer">
-                            Mark all read
-                        </p>
-                    </div>
-                </div>
-            </div>
+  <!-- Feed -->
+  <div class="col-span-7 row-start-2 ps-14">
+    <!-- Feed Filter Bar -->
+    <div class="w-full h-[40px] flex flex-row">
+      <div class="flex items-center">
+        <p class="h3 text-lg font-bold">All Items</p>
+        <p class="text-sm ps-2">{{ totalFeeds }} unread</p>
+      </div>
+      <div class="w-auto flex items-center justify-between ms-auto me-16">
+        <div class="flex justify-evenly items-center w-40 h-full">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/4254/4254068.png"
+            alt="normal layout icon"
+            class="w-[14px] h-[14px] cursor-pointer"
+          />
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/1250/1250641.png"
+            alt="bento layout icon"
+            class="w-[14px] h-[14px] cursor-pointer"
+          />
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/4990/4990567.png"
+            alt="list layout icon"
+            class="w-[14px] h-[14px] cursor-pointer"
+          />
         </div>
+        <div class="flex justify-evenly items-center h-full w-auto">
+          <div
+            class="relative w-[80px] h-[30px] after:content-['New'] after:inline-block after:relative after:w-[10px] after:h-[10px] after:bottom-6 after:left-0 after:bg-zinc-500 after:[clip-path:polygon(60%_0%,_0%_55%,_0%_0%)]"
+          >
+            <p
+              class="relative flex justify-center items-center text-base font-thiner cursor-pointer"
+            >
+              Newest
+            </p>
+          </div>
 
-        <!-- Feed -->
-         <div class="w-full h-auto flex flex-col pt-10">
-            <div class="w-full font-thin text-sm uppercase">
-                today
-            </div>
-            @for (feeds of categories; track feeds.name) {
-                @for (feed of feeds.feeds; track feed.feedUrl) {
-                    <ul class="flex flex-row py-5">
+          <div class="flex justify-center items-center w-[80px] h-[30px]">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/2805/2805359.png"
+              alt="refresh icon"
+              class="w-[16px] me-1"
+            />
+            <p class="text-base font-thiner cursor-pointer">Refresh</p>
+          </div>
 
-                        <span 
-                        class="inline-block h-2 w-2 shrink-0 rounded-full bg-sky-500 mt-[8px] mr-[6px]"
-                        >
-                        </span>
-
-                        <li 
-                        class="w-full flex flex-row ps-2"
-                        >
-                            <div class="flex flex-col">
-                                <div class="flex flex-row">
-                                    <span
-                                    class="w-5 h-5 flex justify-center rounded"
-                                    [style.backgroundColor]="'color-mix(in srgb, ' + feeds.color + ' 80%, black)'"
-                                    >
-                                        <p class="text-sm font-thin text-white">
-                                            {{ feed.title[0] }}
-                                        </p>
-                                    </span>
-                                    <p class="text-sm font-thiner ps-2">
-                                        {{ feed.title }}
-                                    </p>
-                                </div>
-                                <p class="text-lg font-bold pb-2">
-                                    {{ feed.description }}
-                                </p>
-                                @if (feed.notes) {
-                                    <p class="text-base font-thin pb-2">
-                                        {{ feed.notes }}
-                                    </p>
-                                }
-                                <span
-                                class="max-w-max rounded-full px-2"
-                                [style.backgroundColor]="feeds.color + '70'"
-                                >
-                                    <p 
-                                    class="text-sm font-normal"
-                                    >
-                                        {{ feeds.name }}
-                                    </p>
-                                </span>
-                            </div>
-
-                        </li>
-
-                    </ul>
-                }
-            }
-         </div>
-
+          <div class="flex justify-center items-center w-auto h-[30px] ms-2">
+            <p class="text-base font-thiner cursor-pointer">Mark all read</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Feed -->
+    <div class="w-full h-auto flex flex-col pt-10">
+      <div class="w-full font-thin text-sm uppercase">today</div>
+      @for (feeds of categories; track feeds.name) {
+        @for (feed of feeds.feeds; track feed.feedUrl) {
+          <ul class="flex flex-row py-5">
+            <span class="inline-block h-2 w-2 shrink-0 rounded-full bg-sky-500 mt-[8px] mr-[6px]">
+            </span>
+
+            <li class="w-full flex flex-row ps-2">
+              <div class="flex flex-col">
+                <div class="flex flex-row">
+                  <span
+                    class="w-5 h-5 flex justify-center rounded"
+                    [style.backgroundColor]="'color-mix(in srgb, ' + feeds.color + ' 80%, black)'"
+                  >
+                    <p class="text-sm font-thin text-white">
+                      {{ feed.title[0] }}
+                    </p>
+                  </span>
+                  <p class="text-sm font-thiner ps-2">
+                    {{ feed.title }}
+                  </p>
+                </div>
+                <p class="text-lg font-bold pb-2">
+                  {{ feed.description }}
+                </p>
+                @if (feed.notes) {
+                  <p class="text-base font-thin pb-2">
+                    {{ feed.notes }}
+                  </p>
+                }
+                <span
+                  class="max-w-max rounded-full px-2"
+                  [style.backgroundColor]="feeds.color + '70'"
+                >
+                  <p class="text-sm font-normal">
+                    {{ feeds.name }}
+                  </p>
+                </span>
+              </div>
+            </li>
+          </ul>
+        }
+      }
+    </div>
+
+  </div>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
@@ -235,6 +249,5 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 
 <router-outlet />
