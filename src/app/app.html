@@ -50,7 +50,7 @@
           <button class="text-xl font-bold cursor-pointer ps-4">+</button>
         </div>
         <div class="px-4">
-          <div class="w-[33px] text-center rounded-4xl bg-lime-500 uppercase font-bold p-1">
+          <div class="w-[33px] text-center rounded-4xl bg-lime-500 uppercase font-bold p-1 cursor-pointer">
             <p class="text-base text-white">ps</p>
           </div>
         </div>
@@ -62,25 +62,78 @@
   <div class="w-50 h-fit row-start-2 bg-white sticky top-23 ps-4">
     <div class="flex flex-col">
       <div class="flex flex-row items-center">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/14138/14138073.png"
-          alt="items icon"
-          class="w-[16px] me-2"
-        />
-        <p class="text-sm font-normal">All Items</p>
+        <svg
+          class="w-[16px] h-[16px] me-2"
+          [ngClass]="{
+            'text-blue-400': sidebarActive === 'All',
+            'text-black': sidebarActive !== 'All'
+          }"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-label="All items icon"
+        >
+          <rect x="4" y="4" width="16" height="16" rx="2" />
+          <path d="M8 9h8M8 13h8M8 17h4" />
+        </svg>
+        <p 
+        class="text-sm font-normal"
+        (click)="sidebarActive = 'All'"
+        [ngClass]="{ 
+          'text-blue-400': sidebarActive === 'All',  
+          'text-black': sidebarActive !== 'All'
+        }"
+        >
+          All Items
+        </p>
         <div class="ms-auto">
-          <p class="text-sm">{{ totalFeeds }}</p>
+          <p 
+          class="text-sm"
+          [ngClass]="{ 
+            'text-blue-400': sidebarActive === 'All',  
+            'text-black': sidebarActive !== 'All'
+          }"
+          >
+            {{ totalFeeds }}
+          </p>
         </div>
       </div>
       <div class="flex flex-row items-center pt-4">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/10421/10421470.png"
-          alt="bookmark icon"
-          class="w-[16px] me-2"
-        />
-        <p class="text-sm font-normal">Saved</p>
+        <svg
+          class="w-[16px] h-[16px] me-2"
+          [ngClass]="{
+            'text-blue-400': sidebarActive === 'Saved',
+            'text-black': sidebarActive !== 'Saved'
+          }"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-label="Bookmark icon"
+        >
+          <path d="M6 3h12v18l-6-4-6 4V3Z" />
+        </svg>
+        <p 
+        class="text-sm font-normal"
+        (click)="sidebarActive = 'Saved'"
+        [ngClass]="{ 
+          'text-blue-400': sidebarActive === 'Saved',  
+          'text-black': sidebarActive !== 'Saved'
+        }"
+        >
+          Saved
+        </p>
         <div class="ms-auto">
-          <p class="text-sm">0</p>
+          <p 
+          class="text-sm"
+          [ngClass]="{ 
+            'text-blue-400': sidebarActive === 'Saved',  
+            'text-black': sidebarActive !== 'Saved'
+          }"
+          >
+            0
+          </p>
         </div>
       </div>
     </div>
@@ -144,7 +197,8 @@
     <!-- Feed Filter Bar -->
     <div class="w-full h-[40px] flex flex-row">
       <div class="flex items-center">
-        <p class="h3 text-lg font-bold">All Items</p>
+        <p 
+        class="h3 text-lg font-bold">All Items</p>
         <p class="text-sm ps-2">{{ totalFeeds }} unread</p>
       </div>
       <div class="w-auto flex items-center justify-between ms-auto me-16">
@@ -201,7 +255,7 @@
             <span class="inline-block h-2 w-2 shrink-0 rounded-full bg-sky-500 mt-[8px] mr-[6px]">
             </span>
 
-            <li class="w-full flex flex-row ps-2">
+            <li class="w-full flex flex-row ps-2 cursor-pointer">
               <div class="flex flex-col">
                 <div class="flex flex-row">
                   <span

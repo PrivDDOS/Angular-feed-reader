@@ -17,6 +17,7 @@ export class App implements OnInit {
   protected readonly title = signal('angular-feed');
 
   activeTab: 'Feed' | 'Digest' | 'Discover' = 'Feed';
+  sidebarActive: 'All' | 'Saved' = 'All';
   categoryBtn: string | null = null;
   categories: Category[] = [];
   filterData: any[] = [];
